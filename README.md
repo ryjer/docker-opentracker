@@ -7,7 +7,7 @@ docker run -d --name opentracker \
   --restart=always \
   -p 6969:6969/udp \
   -p 6969:6969/tcp \
-  wryjer/opentracker
+  ryjer/opentracker
 ```
 Then，open firewall 6969 TCP port and 6969 UDP port.
 
@@ -29,7 +29,7 @@ docker run -d --name opentracker \
   --restart=always \
   -p 6969:6969/udp \
   -p 6969:6969/tcp \
-  wryjer/opentracker
+  ryjer/opentracker
 ```
 注意：需要同时打开防火墙的 6969 TCP端口 和 6969 UDP端口，请注意检查操作系统的防火墙设置。如果你可以访问下面的**统计信息**网址，说明防火墙 tcp 端口已打开
 有的云服务商还会在外层再加一层防火墙，这种情况下你需要将两层防火墙的 6969端口 全部打开。
@@ -49,7 +49,7 @@ docker run -d --name opentracker \
   -v /etc/opentracker/opentracker.conf:/conf/opentracker.conf \
   -p 6969:6969/udp \
   -p 6969:6969/tcp \
-  wryjer/opentracker
+  ryjer/opentracker
 ```
 ### 制作种子说明
 制作种子添加Tracker服务器时，对应服务器地址后需要添加 /announce 路径，示例如下：
