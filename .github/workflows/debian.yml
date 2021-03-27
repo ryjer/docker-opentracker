@@ -7,7 +7,7 @@ on:
   push:
     #branches: [ master ]
     paths:
-    - /debian/Dockerfile
+    - debian/Dockerfile
   pull_request:
     branches: [ master ]
 
