@@ -1,8 +1,10 @@
 # docker-opentracker
 
-![buildx](https://github.com/ryjer/docker-opentracker/workflows/buildx-latest/badge.svg)
+![buildx](https://github.com/ryjer/docker-opentracker/workflows/buildx/badge.svg)
 ![buildx](https://github.com/ryjer/docker-opentracker/workflows/buildx-debian/badge.svg)
+[![Docker Stars](https://img.shields.io/docker/stars/ryjer/opentracker.svg)](https://hub.docker.com/r/ryjer/opentracker/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/ryjer/opentracker.svg)](https://hub.docker.com/r/ryjer/opentracker/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 opentracker is a open and free bittorrent tracker project. It aims for minimal resource usage and is intended to run at your wlan router. 
 ## Usage

@@ -1,4 +1,4 @@
-name: buildx-latest
+name: buildx
 
 on:
   schedule:
