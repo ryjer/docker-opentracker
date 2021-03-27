@@ -1,14 +1,9 @@
-# This is a basic workflow to help you get started with Actions
-
-name: CI
-
-# Controls when the action will run. 
-name: buildx-latest
+name: buildx-debian
 
 on:
   schedule:
   # 每半年3号，2:23执行一次，以同步官方
-  - cron: '23 2 3 */6 *'
+  - cron: '44 2 3 */6 *'
   push:
     #branches: [ master ]
     paths:
