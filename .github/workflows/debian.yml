@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # Checks-out your repository under $GITHUB_WORKSPACE
       - uses: actions/checkout@v2
       
       # 设置 QEMU 以支持多个平台
@@ -52,8 +52,7 @@ jobs:
         with:
           context: debian
           file: Dockerfile
-          #platforms: linux/386,linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le,linux/s390x
-          platforms: linux/amd64,linux/arm64,linux/s390x
+          platforms: linux/amd64,linux/arm64
           push: true
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
