@@ -11,11 +11,11 @@ RUN apk add gcc \
 
 RUN cvs -d :pserver:cvs@cvs.fefe.de:/cvs -z9 co libowfat \
     && cd libowfat \
-    && make \
+    && make -j4 \
     && cd .. \
     && git clone git://erdgeist.org/opentracker \
     && cd opentracker \
-    && make
+    && make -j4
 
 FROM alpine
 
