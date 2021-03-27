@@ -15,7 +15,7 @@ RUN cvs -d :pserver:cvs@cvs.fefe.de:/cvs -z9 co libowfat \
 
 RUN git clone git://erdgeist.org/opentracker \
     && cd opentracker \
-    && make -j2
+    && make -j4
 
 FROM alpine
 

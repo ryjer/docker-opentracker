@@ -9,13 +9,14 @@ RUN apt-get update -y\
         git \
         cvs \
         zlib1g-dev
+
 RUN cvs -d :pserver:cvs@cvs.fefe.de:/cvs -z9 co libowfat \
     && cd libowfat \
     && make \
     && cd .. \
     && git clone git://erdgeist.org/opentracker \
     && cd opentracker \
-    && make
+    && make -j4
 
 
 FROM debian:buster-slim

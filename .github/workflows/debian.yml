@@ -2,8 +2,8 @@ name: buildx-debian
 
 on:
   schedule:
-  # 每半年3号，2:23执行一次，以同步官方
-  - cron: '44 2 3 */6 *'
+  # 每半年3号，UTC 1:47执行一次，以同步官方
+  - cron: '47 1 3 */6 *'
   push:
     #branches: [ master ]
     paths:
