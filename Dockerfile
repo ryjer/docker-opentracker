@@ -15,7 +15,7 @@ RUN cd libowfat \
 
 RUN git clone git://erdgeist.org/opentracker \
     && cd opentracker \
-    && make -j2
+    && make -j4
 
 FROM alpine
 
