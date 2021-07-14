@@ -19,10 +19,10 @@ docker run -d --name opentracker \
 Then，open firewall 6969 TCP port and 6969 UDP port.
 
 Stats information：
-http://domain:6969/stats or http://IP:6666/stats
+http://domain:6969/stats or http://IP:6969/stats
 
 Detail stats information:
-http://domain:6969/stats?mode=everything or http://IP:6666/stats?mode=everything
+http://domain:6969/stats?mode=everything or http://IP:6969/stats?mode=everything
 ## 简介
 Opentracker 是一个用C语言实现的高性能 Bt tracker 服务器。其对硬件配置要求较低，甚至可以在低配置的路由器运行。
 
@@ -39,16 +39,16 @@ docker run -d --name opentracker \
   ryjer/opentracker
 ```
 注意：
-1. 需要同时打开防火墙的 6969 TCP端口 和 6969 UDP端口，请注意检查操作系统的防火墙设置。如果你可以访问下面的**统计信息**网址，说明防火墙 tcp 端口已打开。
+1. 需要同时打开**防火墙**的 6969 TCP端口 和 6969 UDP端口，请注意检查操作系统的防火墙设置。如果你可以访问下面的**统计信息**网址，说明防火墙 tcp 端口已打开。
 
 2. 有的云服务商还会在外层再加一层防火墙，这种情况下你需要将两层防火墙的对应端口（例如 6969端口） 全部打开。
 
 **统计信息**
 注：以下 domain 表示你的 **域名**，IP表示运行 opentracker 容器主机的对外公网IP地址
 
-简略统计信息网址 http://domain:6969/stats 或 http://服务器IP地址:6666/stats
+简略统计信息网址 http://domain:6969/stats 或 http://服务器IP地址:6969/stats
 
-详细统计信息 http://domain:6969/stats?mode=everything 或 http://服务器IP地址:6666/stats?mode=everything
+详细统计信息 http://domain:6969/stats?mode=everything 或 http://服务器IP地址:6969/stats?mode=everything
 ## 高级用法
 如果你想自定义一些配置，请将容器的 /conf/opentracker.conf 文件映射到你指定的一个配置文件夹。
 然后编辑映射目录中的 opentracker.conf 配置文件（提示：因为没有编译，白名单和黑名单不可用）
