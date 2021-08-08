@@ -21,6 +21,9 @@ RUN git clone git://erdgeist.org/opentracker \
 
 FROM debian:buster-slim
 
+# XDG目录规范
+ENV XDG_CONFIG_HOME=/config
+
 COPY --from=build /src/opentracker/opentracker /bin/opentracker
 
 RUN apt update -y\
@@ -28,10 +31,10 @@ RUN apt update -y\
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-VOLUME ["/conf"]
-COPY ./opentracker.conf /conf/opentracker.conf
-COPY ./whitelist	/conf/whitelist
-COPY ./blacklist	/conf/blacklist
+VOLUME ["${XDG_CONFIG_HOME}"]
+COPY ./opentracker.conf ${XDG_CONFIG_HOME}/opentracker.conf
+COPY ./whitelist	${XDG_CONFIG_HOME}/whitelist
+COPY ./blacklist	${XDG_CONFIG_HOME}/blacklist
 
 EXPOSE 6969/tcp 
 EXPOSE 6969/udp
@@ -39,4 +42,4 @@ EXPOSE 6969/udp
 HEALTHCHECK --interval=3m --timeout=4s --retries=3 --start-period=3s \
     CMD curl -fs http://localhost:6969/stats || exit 1
 
-CMD ["/bin/opentracker", "-f", "/conf/opentracker.conf"]
+CMD ["/bin/opentracker", "-f", "${XDG_CONFIG_HOME}/opentracker.conf"]
