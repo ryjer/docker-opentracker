@@ -16,6 +16,32 @@ docker run -d --name opentracker \
   -p 6969:6969/tcp \
   ryjer/opentracker
 ```
+
+or use docker-compose
+```yaml
+version: '3.0'
+  
+services:
+  tracker:
+    image: ryjer/opentracker
+    container_name: opentracker
+    restart: always
+    ports:
+      - 6969:6969/tcp
+      - 6969:6969/udp
+    volumes:
+      - /etc/opentracker:/config
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 128M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+```
+
 Then，open firewall 6969 TCP port and 6969 UDP port.
 
 Stats information：
@@ -38,6 +64,33 @@ docker run -d --name opentracker \
   -p 6969:6969/tcp \
   ryjer/opentracker
 ```
+
+或者使用 docker-compose
+
+```yaml
+version: '3.0'
+  
+services:
+  tracker:
+    image: ryjer/opentracker
+    container_name: opentracker
+    restart: always
+    ports:
+      - 6969:6969/tcp
+      - 6969:6969/udp
+    volumes:
+      - /etc/opentracker:/config
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 128M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+```
+
 注意：
 1. 需要同时打开**防火墙**的 6969 TCP端口 和 6969 UDP端口，请注意检查操作系统的防火墙设置。如果你可以访问下面的**统计信息**网址，说明防火墙 tcp 端口已打开。
 
