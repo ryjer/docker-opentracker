@@ -31,8 +31,8 @@ RUN apk add --no-cache curl && \
 VOLUME ["${XDG_CONFIG_HOME}"]
 
 COPY ./opentracker.conf ${XDG_CONFIG_HOME}/opentracker.conf
-COPY ./whitelist	${XDG_CONFIG_HOME/whitelist
-COPY ./blacklist	${XDG_CONFIG_HOME/blacklist
+COPY ./whitelist	${XDG_CONFIG_HOME}/whitelist
+COPY ./blacklist	${XDG_CONFIG_HOME}/blacklist
 
 EXPOSE 6969/tcp 
 EXPOSE 6969/udp
