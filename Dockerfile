@@ -24,8 +24,7 @@ ENV XDG_CONFIG_HOME=/config
 
 COPY --from=build /src/opentracker/opentracker /bin/opentracker
 
-RUN apk add --no-cache curl && \
-    mkdir -p ${XDG_CONFIG_HOME}
+RUN mkdir -p ${XDG_CONFIG_HOME}
 
 # 对外暴露配置卷
 VOLUME ["${XDG_CONFIG_HOME}"]
@@ -36,8 +35,5 @@ COPY ./blacklist	${XDG_CONFIG_HOME}/blacklist
 
 EXPOSE 6969/tcp 
 EXPOSE 6969/udp
-
-HEALTHCHECK --interval=3m --timeout=4s --retries=3 --start-period=3s \
-    CMD curl -fs http://localhost:6969/stats || exit 1
 
 CMD ["/bin/opentracker", "-f", "/config/opentracker.conf"]
