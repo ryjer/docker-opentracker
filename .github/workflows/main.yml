@@ -57,7 +57,6 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           tags: |
-            ryjer/opentracker:alpine
             ryjer/opentracker:latest
       
       # 处理缓存无限增大问题的临时修复，以防出现问题。（等待github官方修复）
