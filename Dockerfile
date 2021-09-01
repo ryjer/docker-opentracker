@@ -24,7 +24,8 @@ ENV XDG_CONFIG_HOME=/config
 
 COPY --from=build /src/opentracker/opentracker /bin/opentracker
 
-RUN mkdir -p ${XDG_CONFIG_HOME}
+RUN apk add --no-cache curl && \
+    mkdir -p ${XDG_CONFIG_HOME}
 
 # 对外暴露配置卷
 VOLUME ["${XDG_CONFIG_HOME}"]
