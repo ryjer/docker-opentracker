@@ -49,6 +49,13 @@ http://domain:6969/stats or http://IP:6969/stats
 
 Detail stats information:
 http://domain:6969/stats?mode=everything or http://IP:6969/stats?mode=everything
+
+Other information:
+```bash
+http://domain:6969/stats?mode=top100
+http://domain:6969/stats?mode=top10
+```
+
 ## 简介
 Opentracker 是一个用C语言实现的高性能 Bt tracker 服务器。其对硬件配置要求较低，甚至可以在低配置的路由器运行。
 
@@ -102,6 +109,13 @@ services:
 简略统计信息网址 http://domain:6969/stats 或 http://服务器IP地址:6969/stats
 
 详细统计信息 http://domain:6969/stats?mode=everything 或 http://服务器IP地址:6969/stats?mode=everything
+
+排序的详细信息：
+```bash
+http://domain:6969/stats?mode=top100
+http://domain:6969/stats?mode=top10
+```
+
 ## 高级用法
 如果你想自定义一些配置，请将容器的 /conf/opentracker.conf 文件映射到你指定的一个配置文件夹。
 然后编辑映射目录中的 opentracker.conf 配置文件（提示：因为没有编译，白名单和黑名单不可用）
