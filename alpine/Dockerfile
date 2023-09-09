@@ -39,4 +39,4 @@ EXPOSE 6969/udp
 HEALTHCHECK --interval=3m --timeout=4s --retries=3 --start-period=3s \
     CMD curl -fs http://localhost:6969/stats || exit 1
 
-CMD ["/bin/opentracker", "-f", "${XDG_CONFIG_HOME}/opentracker.conf", "-p", "6969", "-P", "6969"]
+CMD ["/bin/opentracker", "-f", "${XDG_CONFIG_HOME}/opentracker.conf", "-d", "${XDG_CONFIG_HOME}", "-p", "6969", "-P", "6969"]

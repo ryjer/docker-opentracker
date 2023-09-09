@@ -1,4 +1,4 @@
-FROM debian:bookworm-slim AS build
+FROM debian:buster-slim AS build
 
 WORKDIR /src
 
@@ -19,7 +19,7 @@ RUN git clone git://erdgeist.org/opentracker \
     && make -j4
 
 
-FROM debian:bookworm-slim
+FROM debian:buster-slim
 
 # XDG目录规范
 ENV XDG_CONFIG_HOME=/config

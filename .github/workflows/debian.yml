@@ -7,7 +7,7 @@ on:
   push:
     #branches: [ master ]
     paths:
-    - debian/Dockerfile
+    - debian/Dockerfile.buster-slim
   pull_request:
     branches: [ master ]
 
@@ -58,7 +58,6 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           tags: |
             ryjer/opentracker:buster-slim
-            ryjer/opentracker:debian
          
       # 处理缓存无限增大问题的临时修复，以防出现问题。（等待github官方修复）
       - name: Move cache
