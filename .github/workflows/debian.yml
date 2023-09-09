@@ -1,4 +1,4 @@
-name: buildx-debian
+name: debian
 
 on:
   schedule:
@@ -51,7 +51,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: debian
-          file: debian/Dockerfile
+          file: Dockerfile.buster-slim
           platforms: linux/amd64,linux/arm64
           push: true
           cache-from: type=local,src=/tmp/.buildx-cache
