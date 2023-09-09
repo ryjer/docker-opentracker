@@ -15,6 +15,8 @@ RUN cvs -d :pserver:cvs@cvs.fefe.de:/cvs -z9 co libowfat \
     && cd .. \
     && git clone git://erdgeist.org/opentracker \
     && cd opentracker \
+    && sed -i '/FEATURES+=-DWANT_IP_FROM_QUERY_STRING$/s/^#//' Makefile \
+    && sed -i '/^FEATURES+=-DWANT_FULLSCRAPE$/s/^/#/' Makefile
     && make
 
 FROM alpine
@@ -35,8 +37,5 @@ COPY ./blacklist	${XDG_CONFIG_HOME}/blacklist
 
 EXPOSE 6969/tcp 
 EXPOSE 6969/udp
-
-HEALTHCHECK --interval=3m --timeout=4s --retries=3 --start-period=3s \
-    CMD curl -fs http://localhost:6969/stats || exit 1
 
 CMD ["/bin/opentracker", "-f", "${XDG_CONFIG_HOME}/opentracker.conf", "-d", "${XDG_CONFIG_HOME}", "-p", "6969", "-P", "6969"]
