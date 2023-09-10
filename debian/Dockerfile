@@ -28,10 +28,12 @@ ENV XDG_CONFIG_HOME=/config
 
 COPY --from=build /src/opentracker/opentracker /bin/opentracker
 
+# 安装 curl 用于健康检查，并创建配置目录
 RUN apt update -y\
     && apt install curl -y \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && mkdir -p ${XDG_CONFIG_HOME}
 
 VOLUME ["${XDG_CONFIG_HOME}"]
 COPY ./opentracker.conf ${XDG_CONFIG_HOME}/opentracker.conf
@@ -41,4 +43,4 @@ COPY ./blacklist	${XDG_CONFIG_HOME}/blacklist
 EXPOSE 6969/tcp 
 EXPOSE 6969/udp
 
-CMD ["/bin/opentracker", "-f", "/config/opentracker.conf", "-d", "/config"]
+CMD ["/bin/opentracker", "-f", "/config/opentracker.conf"]

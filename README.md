@@ -72,7 +72,7 @@ docker run -d --name opentracker \
   ryjer/opentracker
 ```
 
-或者使用 docker-compose
+或者使用 docker-compose 创建一个配置文件，比如`opentracker.yaml`，其内容如下
 
 ```yaml
 version: '3.0'
@@ -96,6 +96,11 @@ services:
       driver: "json-file"
       options:
         max-size: "1m"
+```
+然后使用以下命令部署此容器
+
+```bash
+docker compose -f opentracker.yaml up -d
 ```
 
 注意：
