@@ -1,4 +1,4 @@
-FROM alpine as build
+FROM alpine:3.18.3 as build
 
 WORKDIR /src
 
@@ -19,7 +19,7 @@ RUN cvs -d :pserver:cvs@cvs.fefe.de:/cvs -z9 co libowfat \
     && sed -i '/^FEATURES+=-DWANT_FULLSCRAPE$/s/^/#/' Makefile
     && make -j4
 
-FROM alpine
+FROM alpine:3.18.3
 
 # XDG目录规范
 ENV XDG_CONFIG_HOME=/config
