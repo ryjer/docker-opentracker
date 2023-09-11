@@ -57,6 +57,6 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           tags: |
-            ryjer/opentracker:bullseye-slim
-            ryjer/opentracker:20210823-bullseye-slim
+            ryjer/opentracker:bookworm-slim
+            ryjer/opentracker:20210823-bookworm-slim
 
