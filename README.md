@@ -72,6 +72,12 @@ docker run -d --name opentracker \
   ryjer/opentracker
 ```
 
+或者不分行，一行
+
+```bash
+docker run -d --name opentracker --restart=always -p 6969:6969/udp -p 6969:6969/tcp ryjer/opentracker
+```
+
 或者使用 docker-compose 创建一个配置文件，比如`opentracker.yaml`，其内容如下
 
 ```yaml
