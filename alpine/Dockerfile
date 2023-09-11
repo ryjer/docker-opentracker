@@ -1,4 +1,4 @@
-FROM alpine:3.18.3 as build
+FROM alpine as build
 
 WORKDIR /src
 
@@ -19,7 +19,7 @@ RUN cvs -d :pserver:cvs@cvs.fefe.de:/cvs -z9 co libowfat \
     && sed -i '/^FEATURES+=-DWANT_FULLSCRAPE$/s/^/#/' Makefile
     && make -j4
 
-FROM alpine:3.18.3
+FROM alpine
 
 # XDG目录规范
 ENV XDG_CONFIG_HOME=/config
@@ -30,6 +30,7 @@ COPY --from=build /src/opentracker/opentracker /bin/opentracker
 RUN apk add --no-cache curl \
     && mkdir -p ${XDG_CONFIG_HOME}
 
+# 暴露配置卷路径
 VOLUME ["${XDG_CONFIG_HOME}"]
 
 COPY ./opentracker.conf ${XDG_CONFIG_HOME}/opentracker.conf

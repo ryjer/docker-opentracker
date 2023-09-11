@@ -11,10 +11,9 @@ RUN apk add gcc \
 # 下载并编译 libowfat 库
 RUN cvs -d :pserver:cvs@cvs.fefe.de:/cvs -z9 co libowfat \
     && cd libowfat \
-    && make
-
-# 从官网下载最新 opentracker 源码，并开启Makefile特性：通告非连接ip，关闭 full scrape
-RUN git clone git://erdgeist.org/opentracker \
+    && make -j4 \
+    && cd .. \
+    && git clone git://erdgeist.org/opentracker \
     && cd opentracker \
     && sed -i '/FEATURES+=-DWANT_IP_FROM_QUERY_STRING$/s/^#//' Makefile \
     && sed -i '/^FEATURES+=-DWANT_FULLSCRAPE$/s/^/#/' Makefile \
@@ -32,7 +31,7 @@ COPY --from=build /src/opentracker/opentracker /bin/opentracker
 RUN apk add --no-cache curl \
     && mkdir -p ${XDG_CONFIG_HOME}
 
-# 对外暴露配置卷
+# 对外暴露配置卷路径
 VOLUME ["${XDG_CONFIG_HOME}"]
 
 # 复制配置文件到配置路径

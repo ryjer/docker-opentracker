@@ -8,13 +8,12 @@ RUN apk add gcc \
 	cvs \
 	zlib-dev
 
-# 下载并编译 libowfat 库
+# 下载并编译 libowfat 库，开启ipv6、开启客户端ip通告、关闭full scrape 特性
 RUN cvs -d :pserver:cvs@cvs.fefe.de:/cvs -z9 co libowfat \
     && cd libowfat \
-    && make
-
-# 从官网下载最新 opentracker 源码，并开启Makefile特性：ipv6, 客户端通过ip，关闭full scrape
-RUN git clone git://erdgeist.org/opentracker \
+    && make -j4 \
+    && cd .. \
+    && git clone git://erdgeist.org/opentracker \
     && cd opentracker \
     && sed -i '/FEATURES+=-DWANT_V6$/s/^#//' Makefile \
     && sed -i '/FEATURES+=-DWANT_IP_FROM_QUERY_STRING$/s/^#//' Makefile \
