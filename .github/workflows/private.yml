@@ -2,8 +2,8 @@ name: private
 
 on:
   schedule:
-  # 每半年3号，2:56执行一次，以同步官方
-  - cron: '56 2 3 */6 *'
+  # 每半年3号，2:43执行一次，以同步官方
+  - cron: '43 2 3 */6 *'
   push:
     #branches: [ master ]
     paths:
@@ -60,8 +60,3 @@ jobs:
             ryjer/opentracker:private
             ryjer/opentracker:20210823-private
       
-      # 处理缓存无限增大问题的临时修复，以防出现问题。（等待github官方修复）
-      #- name: Move cache
-        #run: |
-          #rm -rf /tmp/.buildx-cache
-          #mv /tmp/.buildx-cache-new /tmp/.buildx-cache
