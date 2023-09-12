@@ -59,7 +59,6 @@ jobs:
           tags: |
             ryjer/opentracker:alpine
             ryjer/opentracker:20210823-alpine
-            ryjer/opentracker:20210823-alpine-3.18.3
       
       # 处理缓存无限增大问题的临时修复，以防出现问题。（等待github官方修复）
       - name: Move cache

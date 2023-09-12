@@ -16,8 +16,7 @@ RUN cvs -d :pserver:cvs@cvs.fefe.de:/cvs -z9 co libowfat \
     && git clone git://erdgeist.org/opentracker \
     && cd opentracker \
     && sed -i '/FEATURES+=-DWANT_IP_FROM_QUERY_STRING$/s/^#//' Makefile \
-    && sed -i '/^FEATURES+=-DWANT_FULLSCRAPE$/s/^/#/' Makefile \
-    && make -j4
+    && make clean && make -j4
 
 
 FROM alpine
