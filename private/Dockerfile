@@ -9,17 +9,17 @@ RUN apk add gcc \
 	cvs \
 	zlib-dev
 
-# 下载依赖库 libowfat 和 opentracker，设置opentracker特性：支持ipv6、支持黑名单、不公开详细信息、允许通告ip、关闭fullscrape
+# 下载依赖库 libowfat 和 opentracker，设置opentracker特性：支持ipv6、黑名单、允许通告ip、不公开详情、关闭fullscrape
 RUN cvs -d :pserver:cvs@cvs.fefe.de:/cvs -z9 co libowfat \
     && cd libowfat \
     && make -j4 \
     && cd .. \
     && git clone git://erdgeist.org/opentracker \
     && cd opentracker \
-    && sed -i '/#FEATURES+=-DWANT_V6$/s/^#//' Makefile \
-    && sed -i '/#FEATURES+=-DWANT_ACCESSLIST_BLACK$/s/^#//' Makefile \
-    && sed -i '/#FEATURES+=-DWANT_IP_FROM_QUERY_STRING$/s/^#//' Makefile \
-    && sed -i '/#FEATURES+=-DWANT_RESTRICT_STATS$/s/^#//' Makefile \
+    && sed -i '/^#FEATURES+=-DWANT_V6$/s/^#//' Makefile \
+    && sed -i '/^#FEATURES+=-DWANT_ACCESSLIST_BLACK$/s/^#//' Makefile \
+    && sed -i '/^#FEATURES+=-DWANT_IP_FROM_QUERY_STRING$/s/^#//' Makefile \
+    && sed -i '/^#FEATURES+=-DWANT_RESTRICT_STATS$/s/^#//' Makefile \
     && sed -i '/^FEATURES+=-DWANT_FULLSCRAPE$/s/^/#/' Makefile
     && make -j4
 
@@ -44,4 +44,4 @@ COPY ./blacklist	${XDG_CONFIG_HOME}/blacklist
 EXPOSE 6969/tcp 
 EXPOSE 6969/udp
 
-CMD ["/bin/opentracker", "-f", "/config/opentracker.conf"]
+CMD ["/bin/opentracker", "-f", "${XDG_CONFIG_HOME}/opentracker.conf"]
