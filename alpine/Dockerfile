@@ -42,4 +42,4 @@ COPY ./blacklist	${XDG_CONFIG_HOME}/blacklist
 EXPOSE 6969/tcp 
 EXPOSE 6969/udp
 
-CMD ["/bin/opentracker", "-f", "/config/opentracker.conf"]
+CMD ["/bin/opentracker", "-f", "${XDG_CONFIG_HOME}/opentracker.conf"]
