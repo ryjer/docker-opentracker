@@ -3,7 +3,7 @@ name: alpine
 on:
   schedule:
   # 每半年3号，2:23执行一次，以同步官方
-  #- cron: '23 2 3 */6 *'
+    - cron: '23 2 3 */6 *'
   push:
     #branches: [ master ]
     paths:
