@@ -1,6 +1,7 @@
 # docker-opentracker
 
 ![build-main](https://github.com/ryjer/docker-opentracker/workflows/main/badge.svg)
+![build-ipv6](https://github.com/ryjer/docker-opentracker/workflows/ipv6/badge.svg)
 ![build-debian](https://github.com/ryjer/docker-opentracker/workflows/debian/badge.svg)
 [![Docker Stars](https://img.shields.io/docker/stars/ryjer/opentracker.svg)](https://hub.docker.com/r/ryjer/opentracker/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/ryjer/opentracker.svg)](https://hub.docker.com/r/ryjer/opentracker/)
