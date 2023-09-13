@@ -31,12 +31,13 @@ RUN apt update -y\
     && apt install curl -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
-    && mkdir -p ${XDG_CONFIG_HOME}
+    && mkdir -p /config
 
-VOLUME ["${XDG_CONFIG_HOME}"]
-COPY ./opentracker.conf ${XDG_CONFIG_HOME}/opentracker.conf
-COPY ./whitelist	${XDG_CONFIG_HOME}/whitelist
-COPY ./blacklist	${XDG_CONFIG_HOME}/blacklist
+VOLUME ["/config"]
+
+COPY ./opentracker.conf /config/opentracker.conf
+COPY ./whitelist	/config/whitelist
+COPY ./blacklist	/config/blacklist
 
 EXPOSE 6969/tcp 
 EXPOSE 6969/udp
