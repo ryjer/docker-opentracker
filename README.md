@@ -7,8 +7,10 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 opentracker is a open and free bittorrent tracker project. It aims for minimal resource usage and is intended to run at your wlan router. 
+
 ## Usage
 If you want to run a open tracker, just pull the docker image and start up a container:
+
 ```bash
 docker run -d --name opentracker \
   --restart=always \
@@ -62,6 +64,7 @@ Opentracker 是一个用C语言实现的高性能 Bt tracker 服务器。其对�
 你可以在制作Bt种子文件的时候将服务器的地址添加到服务器列表中以使用本服务器。
 
 本仓库将 opentracker 服务器封装为一个 docker 容器，并使用 Alpine 作为基础镜像，将镜像总体积控制在 8MB 以内。
+
 ## 用法
 如果你想运行一个公共的tracker服务器，可以运行以下命令开启一个容器：
 ```bash
@@ -97,7 +100,7 @@ services:
       resources:
         limits:
           cpus: '1'
-          memory: 128M
+          memory: 512M
     logging:
       driver: "json-file"
       options:
@@ -126,7 +129,6 @@ docker compose -f opentracker.yaml up -d
 http://domain:6969/stats?mode=top100
 http://domain:6969/stats?mode=top10
 ```
-
 ## 高级用法
 如果你想自定义一些配置，请将容器的 /conf/opentracker.conf 文件映射到你指定的一个配置文件夹。
 然后编辑映射目录中的 opentracker.conf 配置文件（提示：因为没有编译，白名单和黑名单不可用）
@@ -139,8 +141,10 @@ docker run -d --name opentracker \
   ryjer/opentracker
 ```
 如果你想实现 https 访问，请借助 Apache 或 Nginx 等服务器进行反向代理。
+
 ### 制作种子说明
 制作种子添加Tracker服务器时，对应服务器地址后需要添加 /announce 路径，示例如下：
+
 ```bash
 # 如果你有域名（例如 tracker.abc.com），这么写
 http://tracker.abc.com:6969/announce
@@ -148,6 +152,7 @@ http://tracker.abc.com:6969/announce
 http://服务器IP地址:6969/announce
 ```
 opentracker 同时也支持 udp 协议，所以也可以添加 udp 地址。
+
 ```bash
 # 如果你有域名（例如 tracker.abc.com），这么写
 udp://tracker.abc.com:6969/announce
