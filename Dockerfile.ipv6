@@ -11,7 +11,7 @@ RUN apk add gcc \
 # 下载并编译 libowfat 库，开启ipv6、开启客户端ip通告、关闭full scrape 特性
 RUN cvs -d :pserver:cvs@cvs.fefe.de:/cvs -z9 co libowfat \
     && cd libowfat \
-    && make -j4 \
+    && make -j4
 
 RUN git clone git://erdgeist.org/opentracker \
     && cd opentracker \
