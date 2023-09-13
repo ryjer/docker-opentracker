@@ -1,7 +1,7 @@
 # docker-opentracker
 
-![buildx](https://github.com/ryjer/docker-opentracker/workflows/buildx/badge.svg)
-![buildx](https://github.com/ryjer/docker-opentracker/workflows/buildx-debian/badge.svg)
+![build-main](https://github.com/ryjer/docker-opentracker/workflows/main/badge.svg)
+![build-debian](https://github.com/ryjer/docker-opentracker/workflows/debian/badge.svg)
 [![Docker Stars](https://img.shields.io/docker/stars/ryjer/opentracker.svg)](https://hub.docker.com/r/ryjer/opentracker/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/ryjer/opentracker.svg)](https://hub.docker.com/r/ryjer/opentracker/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
