@@ -1,7 +1,7 @@
 FROM debian:bookworm-slim
 
 # XDG目录规范
-ENV XDG_CONFIG_HOME=/config
+ENV XDG_CONFIG_HOME=/etc/opentracker
 
 # 安装 curl 用于健康检查，并创建配置目录
 RUN apt update -y\
