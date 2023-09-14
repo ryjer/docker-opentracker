@@ -1,45 +1,20 @@
-FROM debian:bookworm-slim AS build
-
-WORKDIR /src
-
-RUN apt-get update -y\
-    && apt-get -y install gcc \
-        g++ \
-        make \
-        git \
-        cvs \
-        zlib1g-dev
-
-RUN cvs -d :pserver:cvs@cvs.fefe.de:/cvs -z9 co libowfat \
-    && cd libowfat \
-    && make
-
-RUN git clone git://erdgeist.org/opentracker \
-    && cd opentracker \
-    && make clean && make -j4
-
-
 FROM debian:bookworm-slim
 
 # XDG目录规范
 ENV XDG_CONFIG_HOME=/config
 
-COPY --from=build /src/opentracker/opentracker /bin/opentracker
-
 # 安装 curl 用于健康检查，并创建配置目录
 RUN apt update -y\
-    && apt install curl -y \
+    && apt install curl opentracker -y \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* \
-    && mkdir -p /config
+    && rm -rf /var/lib/apt/lists/*
 
-VOLUME ["/config"]
+VOLUME ["/etc/opentracker"]
 
-COPY ./opentracker.conf /config/opentracker.conf
-COPY ./whitelist	/config/whitelist
-COPY ./blacklist	/config/blacklist
+COPY ./opentracker.conf /etc/opentracker/opentracker.conf
 
-EXPOSE 6969/tcp 
+EXPOSE 6969/tcp
 EXPOSE 6969/udp
 
-CMD ["/bin/opentracker", "-f", "/config/opentracker.conf"]
+CMD ["/bin/opentracker", "-f", "/usr/bin/opentracker.conf"]
+
