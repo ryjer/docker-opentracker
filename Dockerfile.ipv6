@@ -12,5 +12,5 @@ COPY ./opentracker.conf /etc/opentracker/opentracker.conf
 EXPOSE 6969/tcp 
 EXPOSE 6969/udp
 
-CMD ["/usr/bin/opentracker6", "-f", "/etc/opentracker/opentracker.conf"]
+CMD ["/usr/bin/opentracker6"]
 
