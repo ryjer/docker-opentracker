@@ -8,15 +8,16 @@ RUN apk add gcc \
 	cvs \
 	zlib-dev
 
-# 下载并编译 libowfat 库，开启ipv6、开启客户端ip通告、关闭full scrape 特性
+# 使用2个RUN，优化缓存（只缓存第一个层）
+# 下载并编译 libowfat 库
 RUN cvs -d :pserver:cvs@cvs.fefe.de:/cvs -z9 co libowfat \
     && cd libowfat \
-    && make -j4
-
+    && make
+# 开启ipv6支持
 RUN git clone git://erdgeist.org/opentracker \
     && cd opentracker \
     && sed -i '/FEATURES+=-DWANT_V6$/s/^#//' Makefile \
-    && make clean && make -j4
+    && make clean && make
 
 
 FROM alpine
