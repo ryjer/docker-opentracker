@@ -1,4 +1,4 @@
-name: main.ipv6
+name: ipv6
 
 on:
   schedule:
@@ -58,6 +58,5 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           tags: |
             ryjer/opentracker:ipv6
-            ryjer/opentracker:20210823-ipv6
-            ryjer/opentracker:20210823-ipv6-alpine
-            ryjer/opentracker:20210823-ipv6-alpine3.18.3
+            ryjer/opentracker:ipv6-alpine3.18
+            ryjer/opentracker:ipv6-alpine3.18.3
