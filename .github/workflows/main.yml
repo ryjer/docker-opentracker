@@ -7,7 +7,7 @@ on:
   push:
     #branches: [ master ]
     paths:
-    - Dockerfile
+    - Dockerfile.default
   pull_request:
     branches: [ master ]
 
@@ -51,15 +51,16 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: Dockerfile
+          file: Dockerfile.default
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           tags: |
             ryjer/opentracker:latest
-            ryjer/opentracker:alpine3.18
-            ryjer/opentracker:alpine3.18.3
+            ryjer/opentracker:alpine
+            ryjer/opentracker:alpine3.15
+            ryjer/opentracker:alpine3.15.10
       
       # 处理缓存无限增大问题的临时修复，以防出现问题。（等待github官方修复）
       #- name: Move cache
