@@ -4,10 +4,11 @@ WORKDIR /src
 RUN apk add gcc \
 	g++ \
 	make \
-	git \
+	git wget \
 	cvs \
-	zlib-dev \
-        libowfat-dev
+	zlib-dev
+
+RUN apk add libowfat-dev
 
 RUN git clone git://erdgeist.org/opentracker \
     && cd opentracker \
