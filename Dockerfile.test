@@ -8,8 +8,7 @@ RUN apk add gcc g++ make \
 
 RUN git clone git://erdgeist.org/opentracker \
     && cd opentracker \
-    && sed -e "s/^LIBOWFAT_HEADERS=\$(PREFIX)\/libowfat/LIBOWFAT_HEADERS=\/usr\/include\/libowfat/" -e "s/^LIBOWFAT_LIBRARY=\$(PREFIX)\/libowfat/LIBOWFAT_
-LIBRARY=\/usr\/lib/"  Makefile -i \
+    && sed -e "s/^LIBOWFAT_HEADERS=\$(PREFIX)\/libowfat/LIBOWFAT_HEADERS=\/usr\/include\/libowfat/" -e "s/^LIBOWFAT_LIBRARY=\$(PREFIX)\/libowfat/LIBOWFAT_LIBRARY=\/usr\/lib/"  Makefile -i \
     && make clean && make
 
 
