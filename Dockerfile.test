@@ -6,12 +6,8 @@ RUN apk add gcc \
 	make \
 	git \
 	cvs \
-	zlib-dev
-
-# 下载并编译 libowfat 库
-RUN cvs -d :pserver:cvs@cvs.fefe.de:/cvs -z9 co libowfat \
-    && cd libowfat \
-    && make
+	zlib-dev \
+        libowfat-dev
 
 RUN git clone git://erdgeist.org/opentracker \
     && cd opentracker \
