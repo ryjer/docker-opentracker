@@ -7,7 +7,7 @@ on:
   push:
     #branches: [ master ]
     paths:
-    - Dockerfile.default
+    - Dockerfile
   pull_request:
     branches: [ master ]
 
@@ -58,7 +58,7 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           tags: |
             ryjer/opentracker:20180526
-            ryjer/opentracker:20180526-r1
+            ryjer/opentracker:20180526-r0
             ryjer/opentracker:20180526-alpine3.15.10
             ryjer/opentracker:20180526-alpine3.15
             ryjer/opentracker:alpine3.15
