@@ -57,9 +57,10 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           tags: |
-            ryjer/opentracker:ipv6-20180526
-            ryjer/opentracker:ipv6-20180526-r1
-            ryjer/opentracker:ipv6-20180526-alpine3.15.10
-            ryjer/opentracker:ipv6-20180526-alpine3.15
-            ryjer/opentracker:alpine3.15.10
-            ryjer/opentracker:alpine3.15
+            ryjer/opentracker:ipv6-20210823
+            ryjer/opentracker:ipv6-20210823-r1
+            ryjer/opentracker:ipv6-20210823-alpine3.16.7
+            ryjer/opentracker:ipv6-20210823-alpine3.16
+            ryjer/opentracker:ipv6-alpine3.16.7
+            ryjer/opentracker:ipv6-alpine3.16
+
