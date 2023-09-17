@@ -1,16 +1,43 @@
-FROM alpine
+FROM alpine:3.15.10 as build
+
+WORKDIR /src
+RUN apk add gcc g++ make \
+        sed \
+	git wget tar \
+	zlib-dev
+
+RUN wget https://github.com/ryjer/libowfat/archive/refs/tags/v0.32.tar.gz \
+    && tar -zxvf v0.32.tar.gz \
+    && mv libowfat-0.32 libowfat \
+    && cd libowfat \
+    && make
+
+RUN git clone git://erdgeist.org/opentracker \
+    && cd opentracker \
+    && sed -i '/^#FEATURES+=-DWANT_V6$/s/^#//' Makefile \
+    && make
+
+
+FROM alpine:3.15.10
+
+# XDG目录规范
+ENV XDG_CONFIG_HOME=/config
+
+COPY --from=build /src/opentracker/opentracker /bin/opentracker
 
 # 创建配置目录，安装 curl 健康检查使用
-RUN apk add --no-cache opentracker6 curl
+RUN apk add --no-cache curl \
+    && mkdir -p /config
 
 # 对外暴露配置卷路径
-VOLUME ["/etc/opentracker"]
+VOLUME /config
 
 # 复制配置文件到配置路径
-COPY ./opentracker.conf /etc/opentracker/opentracker.conf
+COPY ./opentracker.conf /config/opentracker.conf
+COPY ./whitelist	/config/whitelist
+COPY ./blacklist	/config/blacklist
 
 EXPOSE 6969/tcp 
 EXPOSE 6969/udp
 
-CMD ["/usr/bin/opentracker6"]
-
+CMD /bin/opentracker -f /config/opentracker.conf
