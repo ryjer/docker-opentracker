@@ -1,4 +1,4 @@
-FROM alpine:3.17.5
+FROM alpine:3.18.3
 
 # 创建配置目录，安装 curl 健康检查使用
 RUN apk add --no-cache opentracker
