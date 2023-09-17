@@ -3,13 +3,18 @@ FROM alpine:3.15.10 as build
 WORKDIR /src
 RUN apk add gcc g++ make \
         sed \
-	git \
-	zlib-dev libowfat-dev
+	git wget tar \
+	zlib-dev
+
+RUN wget https://github.com/ryjer/libowfat/archive/refs/tags/v0.32.tar.gz \
+    && mv v0.32.tar.gz libowfat.tar.gz \
+    && tar -zxvf libowfat.tar.gz \
+    && cd libowfat \
+    && make
 
 RUN git clone git://erdgeist.org/opentracker \
     && cd opentracker \
-    && sed -e "s/^LIBOWFAT_HEADERS=\$(PREFIX)\/libowfat/LIBOWFAT_HEADERS=\/usr\/include\/libowfat/" -e "s/^LIBOWFAT_LIBRARY=\$(PREFIX)\/libowfat/LIBOWFAT_LIBRARY=\/usr\/lib/"  Makefile -i \
-    && make clean && make
+    && make
 
 
 FROM alpine:3.15.10
