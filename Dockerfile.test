@@ -7,8 +7,8 @@ RUN apk add gcc g++ make \
 	zlib-dev
 
 RUN wget https://github.com/ryjer/libowfat/archive/refs/tags/v0.32.tar.gz \
-    && mv v0.32.tar.gz libowfat.tar.gz \
-    && tar -zxvf libowfat.tar.gz \
+    && tar -zxvf v0.32.tar.gz \
+    && mv libowfat-0.32 libowfat \
     && cd libowfat \
     && make
 
