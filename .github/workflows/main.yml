@@ -58,11 +58,11 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           tags: |
             ryjer/opentracker:20210823
-            ryjer/opentracker:20210823-r0
-            ryjer/opentracker:20210823-alpine3.16.7
-            ryjer/opentracker:20210823-alpine3.16
-            ryjer/opentracker:alpine3.16
-            ryjer/opentracker:alpine3.16.7
+            ryjer/opentracker:20210823-r1
+            ryjer/opentracker:20210823-alpine3.17.5
+            ryjer/opentracker:20210823-alpine3.17
+            ryjer/opentracker:alpine3.17
+            ryjer/opentracker:alpine3.17.5
       
       # 处理缓存无限增大问题的临时修复，以防出现问题。（等待github官方修复）
       #- name: Move cache
